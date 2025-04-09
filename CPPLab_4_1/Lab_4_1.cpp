@@ -11,6 +11,7 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
+	cout << "Введите строку:" << endl;
 	char* string = new char[MAXSIZE];
 	cin.getline(string, MAXSIZE);
 
@@ -40,6 +41,8 @@ int main()
 		}
 		i++;
 	}
+
+	delete[] string;
 
 	system("pause");
 	return 0;
