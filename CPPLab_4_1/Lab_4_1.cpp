@@ -5,20 +5,22 @@
 
 using namespace std;
 
-int main()
+char* input(char* string)
 {
-	setlocale(LC_ALL, "rus");
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-
 	cout << "Введите строку:" << endl;
-	char* string = new char[MAXSIZE];
 	cin.getline(string, MAXSIZE);
-
-	char symbol;
-	cout << "Задайте сивол, на который должно заканчиваться слово: ";
-	cin >> symbol;
-
+	return string;
+}
+void output(char* string, int i, int j)
+{
+	for (j; j <= i; j++)
+	{
+		cout << *(string + j);
+	}
+	cout << endl;
+}
+void task(char* string, char symbol)
+{
 	int i = 0;
 	while (*(string + i) != '\0')
 	{
@@ -33,14 +35,26 @@ int main()
 					break;
 				}
 			}
-			for (j; j <= i; j++)
-			{
-				cout << *(string + j);
-			}
-			cout << endl;
+			output(string, i, j);
 		}
 		i++;
 	}
+}
+
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	char* string = new char[MAXSIZE];
+	string = input(string);
+
+	char symbol;
+	cout << "Задайте сивол, на который должно заканчиваться слово: ";
+	cin >> symbol;
+
+	task(string, symbol);
 
 	delete[] string;
 
